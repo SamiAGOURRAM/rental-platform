@@ -16,6 +16,8 @@ export default ts.config(
       '**/.prisma',
       '**/migrations',
       '**/*.config.*',
+      'e2e/**',
+      'playwright-report/**',
       'packages/backend/modify-plugin.js',
       'packages/backend/modify-plugin.cjs',
       'packages/backend/modify-plugin2.cjs',
@@ -69,11 +71,7 @@ export default ts.config(
   },
   {
     files: ['packages/backend/src/**/*.ts'],
-    ignores: [
-      'packages/backend/src/**/*.test.ts',
-      'packages/backend/src/**/*.integration.test.ts',
-      'packages/backend/src/**/*.routes.test.ts',
-    ],
+    ignores: ['packages/backend/src/**/*.test.ts'],
     languageOptions: {
       parserOptions: {
         project: './packages/backend/tsconfig.json',

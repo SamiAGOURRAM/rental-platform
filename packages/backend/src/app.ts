@@ -22,6 +22,7 @@ import { deliveryRoutes } from './modules/delivery/delivery.routes.js';
 import { carbonRoutes } from './modules/carbon/carbon.routes.js';
 import { adminRoutes } from './modules/admin/admin.routes.js';
 import { configRoutes } from './modules/config/config.routes.js';
+import { notificationRoutes } from './modules/notification/notification.routes.js';
 
 // Event handlers
 import { eventBus } from './common/events/event-bus.js';
@@ -43,6 +44,7 @@ export async function buildApp(): Promise<FastifyInstance> {
 
   const app = Fastify({
     logger: loggerConfig,
+    trustProxy: true,
     genReqId: () => {
       // Short alphanumeric request ID for logs
       return Math.random().toString(36).slice(2, 10);
@@ -183,6 +185,7 @@ export async function buildApp(): Promise<FastifyInstance> {
       await api.register(carbonRoutes, { prefix: '/carbon' });
       await api.register(adminRoutes, { prefix: '/admin' });
       await api.register(configRoutes, { prefix: '/config' });
+      await api.register(notificationRoutes, { prefix: '/notifications' });
     },
     { prefix: '/api/v1' },
   );
@@ -239,7 +242,7 @@ function wireEventHandlers(systemUserId?: string): void {
     }
 
     try {
-      await notificationService.sendOrderConfirmed(orderId);
+      await notificationService.notifyOrderConfirmed(orderId);
     } catch (err) {
       console.error('[EventBus] Failed to send order confirmed email:', err);
     }
@@ -248,7 +251,7 @@ function wireEventHandlers(systemUserId?: string): void {
   // ORDER_DISPATCHED → tell the customer their wardrobe is on the way
   eventBus.on('ORDER_DISPATCHED', async ({ orderId }) => {
     try {
-      await notificationService.sendOrderShipped(orderId);
+      await notificationService.notifyOrderShipped(orderId);
     } catch (err) {
       console.error('[EventBus] Failed to send shipping email:', err);
     }
@@ -257,7 +260,7 @@ function wireEventHandlers(systemUserId?: string): void {
   // DELIVERY_COMPLETED → send return reminder
   eventBus.on('DELIVERY_COMPLETED', async ({ orderId }) => {
     try {
-      await notificationService.sendReturnReminder(orderId);
+      await notificationService.notifyReturnReminder(orderId);
     } catch (err) {
       console.error('[EventBus] Failed to send return reminder:', err);
     }
@@ -275,7 +278,7 @@ function wireEventHandlers(systemUserId?: string): void {
   // RETURN_RECEIVED → confirm receipt to the customer
   eventBus.on('RETURN_RECEIVED', async ({ orderId }) => {
     try {
-      await notificationService.sendReturnReceived(orderId);
+      await notificationService.notifyReturnReceived(orderId);
     } catch (err) {
       console.error('[EventBus] Failed to send return-received email:', err);
     }
@@ -284,7 +287,7 @@ function wireEventHandlers(systemUserId?: string): void {
   // ORDER_CANCELLED → confirm cancellation (and refund summary if any)
   eventBus.on('ORDER_CANCELLED', async ({ orderId }) => {
     try {
-      await notificationService.sendOrderCancelled(orderId);
+      await notificationService.notifyOrderCancelled(orderId);
     } catch (err) {
       console.error('[EventBus] Failed to send cancellation email:', err);
     }
@@ -293,7 +296,7 @@ function wireEventHandlers(systemUserId?: string): void {
   // ORDER_COMPLETED → send wrap-up email
   eventBus.on('ORDER_COMPLETED', async ({ orderId }) => {
     try {
-      await notificationService.sendRentalCompleted(orderId);
+      await notificationService.notifyRentalCompleted(orderId);
     } catch (err) {
       console.error('[EventBus] Failed to send rental-completed email:', err);
     }

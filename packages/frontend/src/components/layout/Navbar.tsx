@@ -5,6 +5,7 @@ import { Container } from './Container';
 import { useCart } from '@/context/CartContext';
 import { useFavorites } from '@/context/FavoritesContext';
 import { useAuth } from '@/context/AuthContext';
+import { NotificationBell } from './NotificationBell';
 
 const navLinks = [
   { label: 'Collection', href: '/collection' },
@@ -61,6 +62,8 @@ export function Navbar() {
               </span>
             </Link>
           )}
+
+          {user && <NotificationBell />}
 
           <Link
             to="/capsule"

@@ -126,6 +126,15 @@ enum CapsuleCategory {
   casual
 }
 
+enum NotificationType {
+  ORDER_CONFIRMED
+  ORDER_SHIPPED
+  RETURN_REMINDER
+  RETURN_RECEIVED
+  ORDER_CANCELLED
+  RENTAL_COMPLETED
+}
+
 // ─────────────────────────────────────────────────────────────
 // Users & Auth
 // ─────────────────────────────────────────────────────────────
@@ -150,6 +159,7 @@ model User {
   orders               Order[]
   refreshTokens        RefreshToken[]
   carbonSavings        CarbonSaving[]
+  notifications        Notification[]
   orderStatusHistories OrderStatusHistory[] @relation("ChangedBy")
 
   @@map("users")
@@ -209,6 +219,7 @@ model RefreshToken {
 
   @@index([userId])
   @@index([tokenHash])
+  @@index([rotatedToId])
   @@map("refresh_tokens")
 }
 
@@ -517,4 +528,29 @@ model CarbonSaving {
 
   @@index([userId])
   @@map("carbon_savings")
+}
+
+// ─────────────────────────────────────────────────────────────
+// In-app Notifications
+// ─────────────────────────────────────────────────────────────
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String           @map("user_id")
+  type      NotificationType
+  titleEn   String           @map("title_en")
+  titleFr   String           @map("title_fr")
+  titleEs   String           @map("title_es")
+  bodyEn    String           @map("body_en")
+  bodyFr    String           @map("body_fr")
+  bodyEs    String           @map("body_es")
+  link      String?
+  readAt    DateTime?        @map("read_at")
+  createdAt DateTime         @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, readAt])
+  @@index([userId, createdAt])
+  @@map("notifications")
 }

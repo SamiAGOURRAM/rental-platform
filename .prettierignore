@@ -3,3 +3,5 @@ pnpm-lock.yaml
 **/.prisma
 **/migrations
 **/node_modules
+e2e/
+playwright-report/

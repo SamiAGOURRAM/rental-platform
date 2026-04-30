@@ -23,6 +23,7 @@ export class UploadService {
     file: Buffer,
     mimeType: string,
     originalName?: string,
+    baseDir?: string,
   ): Promise<UploadedImage> {
     if (!ALLOWED_MIME.has(mimeType)) {
       throw new Error(`Unsupported image type: ${mimeType}`);
@@ -31,7 +32,7 @@ export class UploadService {
       throw new Error('Empty file');
     }
 
-    const dir = resolve(process.cwd(), 'uploads', 'products');
+    const dir = resolve(baseDir ?? process.cwd(), 'uploads', 'products');
     await mkdir(dir, { recursive: true });
 
     const ext =

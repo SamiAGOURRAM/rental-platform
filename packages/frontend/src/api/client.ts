@@ -15,6 +15,8 @@ export class ApiError extends Error {
 let _accessToken: string | null = null;
 export function setAccessToken(token: string | null) {
   _accessToken = token;
+  // Expose token on window for e2e testing
+  window.__mv_accessToken = token;
 }
 export function getAccessToken() {
   return _accessToken;

@@ -8,6 +8,7 @@
     "predev": "prisma generate",
     "prebuild": "prisma generate",
     "pretest": "prisma generate",
+    "pretest:integration": "prisma generate",
     "dev": "tsx watch src/server.ts",
     "build": "tsc --project tsconfig.build.json",
     "start": "node dist/server.js",

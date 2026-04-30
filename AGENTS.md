@@ -3,7 +3,7 @@
 ## Scope and source of truth
 
 - This is a pnpm workspace (`pnpm-workspace.yaml`) with two packages: `packages/backend` and `packages/frontend`; prefer `pnpm --filter <package> ...` commands from repo root.
-- `docs/architecture.md` is explicitly marked "design phase" and is not fully current; use executable sources first (`package.json` scripts, `packages/backend/src/app.ts`, `packages/backend/src/server.ts`).
+- `docs/architecture.md` was reclassified to "Implemented" on 2026-04-28; use executable sources first (`package.json` scripts, `packages/backend/src/app.ts`, `packages/backend/src/server.ts`) for the latest truth.
 - Keep the repo workflow expectations from `CLAUDE.md`: for non-trivial tasks, maintain plan/review notes in `tasks/todo.md` and verify changes before closing work.
 
 ## Setup and runtime prerequisites

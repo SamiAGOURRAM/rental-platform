@@ -21,10 +21,13 @@
     "typecheck": "pnpm --filter backend typecheck && pnpm --filter frontend build --mode typecheck",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "e2e": "playwright test",
+    "e2e:install": "playwright install chromium",
     "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.59.1",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
