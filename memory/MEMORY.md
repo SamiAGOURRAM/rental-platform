@@ -1,0 +1,4 @@
+- [Florence - Builder & Startup Founder](user_profile.md) — Technical founder, experienced dev, Paris-based, building travel rental startup
+- [Travel Clothing Rental Startup](project_rental_startup.md) — Green startup: rent clothes to travelers, deliver, collect, clean, re-circulate, donate
+- [No workarounds or placeholder code](feedback_no_placeholder_code.md) — Prod-grade only, proper design patterns, no hacks for core features
+- [No informal channels](feedback_no_whatsapp_instagram.md) — Never suggest WhatsApp/Instagram for booking, custom platform only

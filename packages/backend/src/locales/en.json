@@ -1,0 +1,44 @@
+{
+  "errors": {
+    "not_found": "{{resource}} not found",
+    "unauthorized": "Authentication required",
+    "forbidden": "Insufficient permissions",
+    "conflict": "A conflict occurred",
+    "validation": "Validation failed",
+    "internal": "An unexpected error occurred",
+    "order": {
+      "unavailable": "One or more products are not available for the selected dates",
+      "invalid_dates": "Invalid date range",
+      "min_days": "Minimum rental period is {{min}} day(s)",
+      "max_days": "Maximum rental period is {{max}} days",
+      "cannot_cancel": "Order cannot be cancelled in its current status",
+      "not_owner": "You do not have access to this order"
+    },
+    "payment": {
+      "session_failed": "Failed to create payment session",
+      "already_paid": "This order has already been paid"
+    },
+    "auth": {
+      "invalid_credentials": "Invalid email or password",
+      "email_taken": "An account with this email already exists",
+      "token_expired": "Your session has expired, please log in again",
+      "token_invalid": "Invalid token"
+    }
+  },
+  "email": {
+    "order_confirmed": {
+      "subject": "Your rental order is confirmed! 🌿",
+      "heading": "Order confirmed",
+      "body": "Your clothes will be waiting for you when you arrive. Travel light!"
+    },
+    "delivery_scheduled": {
+      "subject": "Your rental is on its way",
+      "heading": "Delivery scheduled"
+    },
+    "return_reminder": {
+      "subject": "Time to return your rental",
+      "heading": "Return reminder",
+      "body": "Your rental period ends tomorrow. Please arrange your return."
+    }
+  }
+}

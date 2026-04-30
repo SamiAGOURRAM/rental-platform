@@ -1,0 +1,44 @@
+{
+  "errors": {
+    "not_found": "{{resource}} introuvable",
+    "unauthorized": "Authentification requise",
+    "forbidden": "Permissions insuffisantes",
+    "conflict": "Un conflit est survenu",
+    "validation": "Validation échouée",
+    "internal": "Une erreur inattendue s'est produite",
+    "order": {
+      "unavailable": "Un ou plusieurs articles ne sont pas disponibles aux dates sélectionnées",
+      "invalid_dates": "Plage de dates invalide",
+      "min_days": "La durée de location minimale est de {{min}} jour(s)",
+      "max_days": "La durée de location maximale est de {{max}} jours",
+      "cannot_cancel": "La commande ne peut pas être annulée dans son statut actuel",
+      "not_owner": "Vous n'avez pas accès à cette commande"
+    },
+    "payment": {
+      "session_failed": "Impossible de créer la session de paiement",
+      "already_paid": "Cette commande a déjà été payée"
+    },
+    "auth": {
+      "invalid_credentials": "Email ou mot de passe invalide",
+      "email_taken": "Un compte avec cet email existe déjà",
+      "token_expired": "Votre session a expiré, veuillez vous reconnecter",
+      "token_invalid": "Jeton invalide"
+    }
+  },
+  "email": {
+    "order_confirmed": {
+      "subject": "Votre location est confirmée ! 🌿",
+      "heading": "Commande confirmée",
+      "body": "Vos vêtements vous attendront à votre arrivée. Voyagez léger !"
+    },
+    "delivery_scheduled": {
+      "subject": "Votre location est en route",
+      "heading": "Livraison programmée"
+    },
+    "return_reminder": {
+      "subject": "Il est temps de retourner votre location",
+      "heading": "Rappel de retour",
+      "body": "Votre période de location se termine demain. Veuillez organiser votre retour."
+    }
+  }
+}

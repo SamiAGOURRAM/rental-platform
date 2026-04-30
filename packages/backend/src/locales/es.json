@@ -1,0 +1,44 @@
+{
+  "errors": {
+    "not_found": "{{resource}} no encontrado",
+    "unauthorized": "Autenticación requerida",
+    "forbidden": "Permisos insuficientes",
+    "conflict": "Ocurrió un conflicto",
+    "validation": "Validación fallida",
+    "internal": "Ocurrió un error inesperado",
+    "order": {
+      "unavailable": "Uno o más productos no están disponibles para las fechas seleccionadas",
+      "invalid_dates": "Rango de fechas inválido",
+      "min_days": "El período mínimo de alquiler es {{min}} día(s)",
+      "max_days": "El período máximo de alquiler es {{max}} días",
+      "cannot_cancel": "El pedido no se puede cancelar en su estado actual",
+      "not_owner": "No tienes acceso a este pedido"
+    },
+    "payment": {
+      "session_failed": "No se pudo crear la sesión de pago",
+      "already_paid": "Este pedido ya ha sido pagado"
+    },
+    "auth": {
+      "invalid_credentials": "Email o contraseña inválidos",
+      "email_taken": "Ya existe una cuenta con este email",
+      "token_expired": "Tu sesión ha expirado, por favor inicia sesión de nuevo",
+      "token_invalid": "Token inválido"
+    }
+  },
+  "email": {
+    "order_confirmed": {
+      "subject": "¡Tu alquiler está confirmado! 🌿",
+      "heading": "Pedido confirmado",
+      "body": "Tu ropa te estará esperando cuando llegues. ¡Viaja ligero!"
+    },
+    "delivery_scheduled": {
+      "subject": "Tu alquiler está en camino",
+      "heading": "Entrega programada"
+    },
+    "return_reminder": {
+      "subject": "Es hora de devolver tu alquiler",
+      "heading": "Recordatorio de devolución",
+      "body": "Tu período de alquiler termina mañana. Por favor organiza tu devolución."
+    }
+  }
+}
